@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Bootstrap Colorido</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* ====== PALETA BASE ====== */
+    :root {
+      --laranja: #ff6f00;
+      --laranja-claro: #ffe0b2;
+      --rosa: #e91e63;
+      --rosa-claro: #f8bbd0;
+      --amarelo: #ffc107;
+      --amarelo-claro: #fff8e1;
+      --texto-escuro: #333;
+      --fundo-claro: #f9f9f9;
+      --fundo-card: var(--amarelo-claro);
+    }
+
+    body {
+      background-color: var(--fundo-claro);
+      color: var(--texto-escuro);
+      font-family: "Poppins", sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--laranja) !important;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: #fff !important;
+      font-weight: 600;
+    }
+
+    /* Botão destaque */
+    .btn-destaque {
+      background-color: var(--rosa);
+      color: white;
+      border: none;
+      transition: all 0.3s;
+    }
+    .btn-destaque:hover {
+      background-color: #c2185b;
+      color: #3ab306;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--fundo-card);
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card-title {
+      color: var(--texto-escuro);
+      font-weight: 600;
+    }
+
+    /* Seção */
+    #quem-somos {
+      background: linear-gradient(120deg, var(--laranja), var(--rosa));
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+      margin: 40px auto;
+      width: 80%;
+      border-radius: 10px;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: var(--laranja);
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--rosa);
+      text-decoration: underline;
+    }
+
+    /* Carousel */
+    .carousel-item img {
+      object-fit: cover;
+      height: 600px;
+    }
+
+    /* ====== Botão de Tema ====== */
+    .btn-mode {
+      background-color: var(--rosa);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin-left: 15px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .btn-mode:hover {
+      background-color: #c2185b;
+    }
+
+    /* ====== MODO ESCURO ====== */
+    body.dark-mode {
+      --fundo-claro: #1e1e1e;
+      --texto-escuro: #f0f0f0;
+      --fundo-card: #2c2c2c;
+      background-color: var(--fundo-claro);
+      color: var(--texto-escuro);
+    }
+
+    body.dark-mode .navbar {
+      background-color: #333 !important;
+    }
+
+    body.dark-mode .card {
+      background-color: var(--fundo-card);
+      color: var(--texto-escuro);
+      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+    }
+
+    body.dark-mode footer {
+      background-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode #quem-somos {
+      background: linear-gradient(120deg, #555, #111);
+    }
+
+    body.dark-mode .btn-mode {
+      background-color: #ffc107;
+      color: #000;
+    }
+    body.dark-mode .btn-mode:hover {
+      background-color: #ffda3a;
+    }
+
+    /* ====== MODO AUTOMÁTICO (Auto) ====== */
+    @media (prefers-color-scheme: dark) {
+      body.auto-mode {
+        --fundo-claro: #1e1e1e;
+        --texto-escuro: #f0f0f0;
+        --fundo-card: #2c2c2c;
+        background-color: var(--fundo-claro);
+        color: var(--texto-escuro);
+      }
+      body.auto-mode .navbar {
+        background-color: #333 !important;
+      }
+      body.auto-mode footer {
+        background-color: #333;
+      }
+      body.auto-mode #quem-somos {
+        background: linear-gradient(120deg, #555, #111);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand text-white fw-bold" href="#">Minha Empresa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem Somos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#cards">Serviços</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          </ul>
+          <!-- Botão de modo -->
+          <button id="modoBtn" class="btn-mode">🌙 Dark</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Carrossel -->
+  <section class="mt-4">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="imagem/meninas.png" class="d-block w-100" alt="Imagem 1">
+        </div>
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/1200x400/e91e63/ffffff?text=Imagem+2" class="d-block w-100" alt="Imagem 2">
+        </div>
+        <div class="carousel-item">
+          <img src="" class="d-block w-100" alt="Imagem 3">
+        </div>
+        <div class="carousel-item">
+          <img src="imagem/meninas.png" class="d-block w-100" alt="Imagem 4">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section id="cards" class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/400x200/fff8e1/000000?text=Card+1" class="card-img-top" alt="Card 1">
+          <div class="card-body">
+            <h5 class="card-title">Serviço 1</h5>
+            <p class="card-text">Descrição do serviço 1.</p>
+            <a href="#" class="btn btn-destaque">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/400x200/fff8e1/000000?text=Card+2" class="card-img-top" alt="Card 2">
+          <div class="card-body">
+            <h5 class="card-title">Serviço 2</h5>
+            <p class="card-text">Descrição do serviço 2.</p>
+            <a href="#" class="btn btn-destaque">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/400x200/fff8e1/000000?text=Card+3" class="card-img-top" alt="Card 3">
+          <div class="card-body">
+            <h5 class="card-title">Serviço 3</h5>
+            <p class="card-text">Descrição do serviço 3.</p>
+            <a href="#" class="btn btn-destaque">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quem Somos -->
+  <section id="quem-somos">
+    <div class="container">
+      <h2 class="mb-4">Quem Somos</h2>
+      <p>Somos uma empresa dedicada a oferecer os melhores serviços para nossos clientes. Nosso foco é qualidade, inovação e satisfação total.</p>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer id="contato" class="text-white pt-5 pb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Conteúdo Geral</h5>
+          <p>Informações gerais sobre a empresa e serviços.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Contato</h5>
+          <p>CNPJ: 00.000.000/0001-00</p>
+          <p>Telefone: <a href="tel:+5511999999999" class="text-white">+55 (11) 99999-9999</a></p>
+        </div>
+        <div class="col-md-4">
+          <h5>Redes Sociais</h5>
+          <a href="#" class="text-white me-2">Facebook</a>
+          <a href="#" class="text-white me-2">Instagram</a>
+          <a href="#" class="text-white">LinkedIn</a>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        &copy; 2025 Minha Empresa. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script de controle de tema -->
+  <script>
+    const modoBtn = document.getElementById('modoBtn');
+    const body = document.body;
+    const modos = ['light', 'dark', 'auto'];
+    let indice = 0;
+
+    // Recupera preferência salva
+    const modoSalvo = localStorage.getItem('modo') || 'auto';
+    aplicarModo(modoSalvo);
+
+    modoBtn.addEventListener('click', () => {
+      indice = (indice + 1) % modos.length;
+      const novoModo = modos[indice];
+      aplicarModo(novoModo);
+      localStorage.setItem('modo', novoModo);
+    });
+
+    function aplicarModo(modo) {
+      body.classList.remove('light-mode', 'dark-mode', 'auto-mode');
+      if (modo === 'dark') {
+        body.classList.add('dark-mode');
+        modoBtn.textContent = '☀️ Light';
+      } else if (modo === 'light') {
+        modoBtn.textContent = '🌙 Dark';
+      } else if (modo === 'auto') {
+        body.classList.add('auto-mode');
+        modoBtn.textContent = '🌓 Auto';
+      }
+    }
+  </script>
+
+</body>
+</html>
